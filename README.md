@@ -1,33 +1,32 @@
 # **CLI MAC Address Changer (C++)**
 
-A simple command-line tool that lets you change the MAC address of a network interface on Linux.
-It was built to understand how MAC spoofing works, how attackers use it for evasion, and how defenders can detect unauthorized changes.
+A small command-line tool written in C++ to change the MAC address of a network interface on Linux.
+This was built to understand how MAC spoofing works in real systems and how network identification can be altered or monitored for security purposes.
 
 ---
 
 ## **Features**
 
-* Change the MAC address of any network interface
-* Validates MAC format and user input
-* Verifies if the MAC update was applied
-* Uses Linux networking commands through C++
-* Beginner-friendly security utility
+* Change MAC address of any network interface
+* Accepts interface + new MAC as user input
+* Basic MAC format validation
+* Uses Linux networking commands internally
+* Quick to compile and run from the terminal
 
 ---
 
-## **Why I Built This**
+## **Why This Project**
 
-This project helped me learn:
+I built this to learn:
 
-* How MAC spoofing works in real environments
-* How network interfaces are configured in Linux
-* How attackers modify MACs to bypass filters
-* How defenders detect and prevent spoofing attempts
-* Writing small security tools in C++
+* How MAC spoofing works in offensive and defensive security
+* How Linux handles network interfaces at a low level
+* How attackers modify MACs to bypass filters or tracking
+* How to build small security utilities in C++
 
 ---
 
-## **How to Use**
+## **Usage**
 
 Compile:
 
@@ -38,7 +37,13 @@ g++ mac_changer.cpp -o mac_changer
 Run:
 
 ```
-sudo ./mac_changer --interface wlan0 --new-mac 00:11:22:33:44:55
+sudo ./mac_changer <interface> <new-mac>
+```
+
+Example:
+
+```
+sudo ./mac_changer wlan0 00:11:22:33:44:55
 ```
 
 Verify:
@@ -47,10 +52,24 @@ Verify:
 ifconfig wlan0
 ```
 
+or
+
+```
+ip link show wlan0
+```
+
+---
+
+## **Requirements**
+
+* Linux system
+* g++ installed
+* Root privileges for MAC changes
+
 ---
 
 ## **Tech Stack**
 
 * C++
 * Linux Networking Commands
-* system() calls for command execution
+* system() calls
