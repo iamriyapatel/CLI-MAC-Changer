@@ -1,31 +1,56 @@
-# **MAC Changer CLI**  
-A command-line tool to change and spoof MAC addresses with vendor identification.  
+# **CLI MAC Address Changer (C++)**
 
-## **Features**  
-✅ Random MAC address generation  
-✅ Vendor lookup from OUI list  
-✅ Secure and privacy-focused  
+A simple command-line tool that lets you change the MAC address of a network interface on Linux.
+It was built to understand how MAC spoofing works, how attackers use it for evasion, and how defenders can detect unauthorized changes.
 
-## **Usage**  
-Run the following command:  
-```sh
-sudo ./mac_changer <network-interface> [optional-new-MAC]
+---
+
+## **Features**
+
+* Change the MAC address of any network interface
+* Validates MAC format and user input
+* Verifies if the MAC update was applied
+* Uses Linux networking commands through C++
+* Beginner-friendly security utility
+
+---
+
+## **Why I Built This**
+
+This project helped me learn:
+
+* How MAC spoofing works in real environments
+* How network interfaces are configured in Linux
+* How attackers modify MACs to bypass filters
+* How defenders detect and prevent spoofing attempts
+* Writing small security tools in C++
+
+---
+
+## **How to Use**
+
+Compile:
+
 ```
-- **`<network-interface>`** → Specify the network interface (e.g., `eth0`, `wlan0`).  
-- **`[optional-new-MAC]`** → Provide a custom MAC address (optional). If not specified, a random MAC is generated.  
-
-## **Example Commands**  
-**Change MAC randomly:**  
-```sh
-sudo ./mac_changer eth0
-```
-**Set a specific MAC address:**  
-```sh
-sudo ./mac_changer eth0 00:1A:2B:3C:4D:5E
-```
-
-## **Installation & Compilation**  
-Compile the program using:  
-```sh
 g++ mac_changer.cpp -o mac_changer
 ```
+
+Run:
+
+```
+sudo ./mac_changer --interface wlan0 --new-mac 00:11:22:33:44:55
+```
+
+Verify:
+
+```
+ifconfig wlan0
+```
+
+---
+
+## **Tech Stack**
+
+* C++
+* Linux Networking Commands
+* system() calls for command execution
